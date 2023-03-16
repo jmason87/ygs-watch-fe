@@ -2,7 +2,7 @@
     <div>
         <h1>Test</h1>
         <div>
-            <div v-for="player in allPlayers" :key="player.id">
+            <div v-for="player in playerList" :key="player.id">
                 {{ player.name }}
             </div>
         </div>
@@ -15,13 +15,13 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
     name: "Hockey", 
     computed: {
-        ...mapGetters(['allPlayers'])
+        ...mapGetters('hockey', ['playerList'])
     },
     created() {
         this.fetchPlayers()
     },
     methods: {
-        ...mapActions(['fetchPlayers'])
+        ...mapActions('hockey', ['fetchPlayers'])
     }
 }
 </script>

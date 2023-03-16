@@ -1,19 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import hockey from './modules/hockey'
+import hockey from './hockey'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  // state: {
-  // },
-  // getters: {
-  // },
-  // mutations: {
-  // },
-  // actions: {
-  // },
-  modules: {
-    hockey
-  }
+export const modules = {
+  hockey,
+}
+
+export const store = new Vuex.Store({
+  modules
 })
