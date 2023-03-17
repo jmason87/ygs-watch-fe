@@ -1,14 +1,14 @@
-import axios from 'axios'
+import hockeyApi from "../../api/hockey"
 import Vue from 'vue'
 
 export default {
     namespaced: true,
     state: {
-        playerList: []
+        playerList: [],
     },
 
     getters: {
-        playerList: state => state.playerList
+        allPlayers: state => state.playerList,
     },
 
     mutations: {
@@ -18,12 +18,15 @@ export default {
     },
 
     actions: {
-        fetchPlayers({ commit }) {
-            axios.get('http://127.0.0.1:8000/api/players')
+        setPlayerList({ commit }) {
+            return hockeyApi
+                .getPlayers()
                 .then(res => {
-                    const { data } = res.data
-                    commit('setPlayerList', data)
+                    commit('setPlayerList', res.data)
                 })
+        },
+        initializePlayers({ dispatch }) {
+            dispatch('setPlayerList')
         },
     }
 }
