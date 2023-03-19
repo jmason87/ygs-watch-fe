@@ -1,8 +1,13 @@
 <template>
   <div>
     <vue-good-table
-      :columns="columns"
-      :rows="rows"/>
+        :columns="columns"
+        :rows="rows"
+        :group-options="{
+            enabled: true,
+            collapsable: true,
+        }">
+    </vue-good-table>
   </div>
 </template>
 
@@ -12,17 +17,6 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
     computed: {
         ...mapGetters('hockey', ['allPlayers']),
-        rows() {
-            return this.allPlayers.map(player => ({
-                name: player.name,
-                position: player.position,
-                age: player.age,
-                birthdate: player.birthdate,
-                year_drafted: player.year_drafted,
-                round: player.round,
-                pick: player.pick
-            }))
-        },
         columns() {
             return [
                 {
@@ -30,37 +24,55 @@ export default {
                 field: 'name',
                 },
                 {
-                label: 'Position',
-                field: 'position',
+                label: 'Year',
+                field: 'year',
                 },
                 {
-                label: 'Age',
-                field: 'age',
+                label: 'Team',
+                field: 'team',
                 },
                 {
-                label: 'Birthdate',
-                field: 'birthdate',
+                label: 'Games Played',
+                field: 'games_played',
                 },
                 {
-                label: 'Year Drafted',
-                field: 'year_drafted',
+                label: 'Goals',
+                field: 'goals',
                 },
                 {
-                label: 'Round',
-                field: 'round',
+                label: 'Assists',
+                field: 'assists',
                 },
                 {
-                label: 'Pick',
-                field: 'pick',
-                }
+                label: 'Points',
+                field: 'points',
+                },
             ]
-        }
+        },
+        rows() {
+            return this.allPlayers.map(player => ({
+                name: player.name,
+                games_played: 100,
+                team: 'Current Team',
+                goals: 10,
+                assists: 50,
+                points: 60,
+                children: player.season.map(seas => ({
+                    year: seas.year,
+                    games_played: seas.games_played,
+                    team: seas.team.team_name,
+                    goals: seas.goals,
+                    assists: seas.assists,
+                    points: seas.points,
+                }))
+            }))
+        },
     },
     created() {
         this.initializePlayers()
     },
     methods: {
-        ...mapActions('hockey', ['initializePlayers'])
+        ...mapActions('hockey', ['initializePlayers']),
     }
 }
 </script>
