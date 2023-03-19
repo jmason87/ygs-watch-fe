@@ -13,15 +13,14 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-    name: "Hockey", 
     computed: {
-        ...mapGetters(['allPlayers'])
+        ...mapGetters('hockey', ['allPlayers'])
     },
     created() {
-        this.fetchPlayers()
+        this.initializePlayers()
     },
     methods: {
-        ...mapActions(['fetchPlayers'])
+        ...mapActions('hockey', ['initializePlayers'])
     }
 }
 </script>
