@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import PlayerIndex from '../views/hockey/players/PlayerIndex.vue'
 
 Vue.use(VueRouter)
 
@@ -22,7 +21,12 @@ const routes = [
   {
     path: '/hockey/players',
     name: 'hockey',
-    component: PlayerIndex
+    component: () => import(/* webpackChunkName: "about" */'../views/hockey/players/PlayerIndex.vue')
+  },
+  {
+    path: '/hockey/sets',
+    name: 'set',
+    component: () => import(/* webpackChunkName: "about" */'../views/hockey/sets/SetsIndex.vue')
   },
 ]
 

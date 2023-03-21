@@ -1,15 +1,15 @@
 <template>
     <div>
-        <Hockey></Hockey>
+        <Players></Players>
     </div>
 </template>
 <script>
-import Hockey from '@/components/Hockey.vue'
+import Players from '@/components/hockey/players/Players.vue'
 
 export default {
-  name: 'HockeyView',
+  name: 'PlayerView',
   components: {
-   Hockey
+   Players
   }
 }
 </script>
