@@ -11,6 +11,12 @@ export default {
     getSets() {
         return axios.get('http://127.0.0.1:8000/api/sets')
     },
+    getSet(uuid) {
+        return axios.get(`http://127.0.0.1:8000/api/sets/${uuid}`)
+    },
+    storeSet(payload) {
+        return axios.post('http://127.0.0.1:8000/api/sets', payload)
+    }
 }
 
 

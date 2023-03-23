@@ -28,10 +28,15 @@ const routes = [
     name: 'set',
     component: () => import(/* webpackChunkName: "about" */'../views/hockey/sets/SetsIndex.vue')
   },
+  { 
+    path: '/hockey/sets/add',
+    name: 'addSet',
+    component: () => import(/* webpackChunkName: "about" */'../views/hockey/sets/AddSet.vue')
+  },
   {
     path: '*',
     name: '404',
-    component: () => import(/* webpackChunkName: "about" */'../views/404.vue') 
+    component: () => import(/* webpackChunkName: "about" */'../views/404.vue')
   },
 ]
 

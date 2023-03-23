@@ -1,7 +1,9 @@
 <template>
     <div>
         <h1>Sets</h1>
-        <button class="btn btn-primary">Add Set</button>
+        <router-link to="./sets/add">
+        <button class="btn btn-primary">Add Sets</button>
+        </router-link>
         <vue-good-table
             :columns="columns"
             :rows   ="rows">
@@ -14,7 +16,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
     computed: {
-        ...mapGetters('hockey', ['allSets']),
+        ...mapGetters('hockey', ['allSets', 'set']),
         columns() {
             return [
                 {
