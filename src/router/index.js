@@ -28,6 +28,11 @@ const routes = [
     name: 'set',
     component: () => import(/* webpackChunkName: "about" */'../views/hockey/sets/SetsIndex.vue')
   },
+  {
+    path: '*',
+    name: '404',
+    component: () => import(/* webpackChunkName: "about" */'../views/404.vue') 
+  },
 ]
 
 const router = new VueRouter({
