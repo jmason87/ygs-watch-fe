@@ -67,9 +67,13 @@ export default {
                 }))
             }))
         },
+        year() {
+            return this.$route.params.year
+        }
     },
     created() {
         this.initializePlayers()
+        console.log(this.year)
     },
     methods: {
         ...mapActions('hockey', ['initializePlayers']),
