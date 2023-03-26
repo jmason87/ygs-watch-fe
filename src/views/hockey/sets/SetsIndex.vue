@@ -1,15 +1,15 @@
 <template>
     <div>
-        <Sets></Sets>
+        <YearSelection></YearSelection>
     </div>
 </template>
 <script>
-import Sets from '@/components/hockey/sets/Sets.vue'
+import YearSelection from '@/components/hockey/sets/YearSelection.vue'
 
 export default {
   name: 'SetsView',
   components: {
-   Sets
+   YearSelection
   }
 }
 </script>
