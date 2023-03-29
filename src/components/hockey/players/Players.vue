@@ -15,6 +15,12 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
+    props: {
+        uuid: {
+            type: String,
+            required: true,
+        }
+    },
     computed: {
         ...mapGetters('hockey', ['allPlayers']),
         columns() {
@@ -69,7 +75,7 @@ export default {
         },
     },
     created() {
-        this.initializePlayers()
+        this.initializePlayers({set_uuid: this.uuid})
     },
     methods: {
         ...mapActions('hockey', ['initializePlayers']),

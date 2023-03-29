@@ -33,9 +33,9 @@ export default {
     },
 
     actions: {
-        setPlayerList({ commit }, uuid) {
+        setPlayerList({ commit }, params = {}) {
             return hockeyApi
-                .getFilteredPlayers(uuid)
+                .getFilteredPlayers(params)
                 .then(res => {
                     commit('setPlayerList', res.data)
                 })
@@ -61,8 +61,8 @@ export default {
                     commit('setSet', res.data)
                 })
         },
-        initializePlayers({ dispatch }) {
-            dispatch('setPlayerList')
+        initializePlayers({ dispatch }, params = {}) {
+            dispatch('setPlayerList', params)
         },
         initializeSets({ dispatch }) {
             dispatch('setSetList')

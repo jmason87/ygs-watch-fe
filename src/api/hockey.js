@@ -6,8 +6,9 @@ export default {
     getPlayers() {
         return axios.get('http://127.0.0.1:8000/api/players')
     },
-    getFilteredPlayers(uuid) {
-        return axios.get(`http://127.0.0.1:8000/api/players?set_uuid=${uuid}`)
+    getFilteredPlayers(params = {}) {
+        console.log(params)
+        return axios.get(`http://127.0.0.1:8000/api/players`, { params })
     },
 
     // Sets API

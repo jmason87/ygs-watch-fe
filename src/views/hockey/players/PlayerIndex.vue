@@ -6,7 +6,7 @@
           </div>
         </div>
         <div v-if="series1">
-          <Players></Players>
+          <Players :uuid="'98b099ed-91d0-45fd-babc-e00a47e56acd'"></Players>
         </div>
         <div v-if="series2">
           <Players></Players>
