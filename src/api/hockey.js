@@ -6,6 +6,9 @@ export default {
     getPlayers() {
         return axios.get('http://127.0.0.1:8000/api/players')
     },
+    getFilteredPlayers(uuid) {
+        return axios.get(`http://127.0.0.1:8000/api/players?set_uuid=${uuid}`)
+    },
 
     // Sets API
     getSets() {

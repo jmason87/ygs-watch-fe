@@ -41,7 +41,7 @@ const routes = [
     params: true
   },
   { 
-    path: '/hockey/sets/add',
+    path: '/hockey/addSets',
     name: 'addSet',
     component: () => import(/* webpackChunkName: "about" */'../views/hockey/sets/AddSet.vue')
   },

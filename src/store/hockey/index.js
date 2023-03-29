@@ -33,9 +33,9 @@ export default {
     },
 
     actions: {
-        setPlayerList({ commit }) {
+        setPlayerList({ commit }, uuid) {
             return hockeyApi
-                .getPlayers()
+                .getFilteredPlayers(uuid)
                 .then(res => {
                     commit('setPlayerList', res.data)
                 })
