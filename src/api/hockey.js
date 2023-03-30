@@ -3,12 +3,8 @@ import axios from 'axios'
 
 export default {
     // Players API
-    getPlayers() {
-        return axios.get('http://127.0.0.1:8000/api/players')
-    },
-    getFilteredPlayers(params = {}) {
-        console.log(params)
-        return axios.get(`http://127.0.0.1:8000/api/players`, { params })
+    getPlayers(params = {}) {
+        return axios.get('http://127.0.0.1:8000/api/players', { params })
     },
 
     // Sets API

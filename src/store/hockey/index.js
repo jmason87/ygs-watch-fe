@@ -27,7 +27,6 @@ export default {
         },
         setSet(state, data) {
             const set = { ...data }
-            console.log(set)
             Vue.set(state, 'set', set)
         },
     },
@@ -35,7 +34,7 @@ export default {
     actions: {
         setPlayerList({ commit }, params = {}) {
             return hockeyApi
-                .getFilteredPlayers(params)
+                .getPlayers(params)
                 .then(res => {
                     commit('setPlayerList', res.data)
                 })
