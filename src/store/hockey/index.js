@@ -27,15 +27,14 @@ export default {
         },
         setSet(state, data) {
             const set = { ...data }
-            console.log(set)
             Vue.set(state, 'set', set)
         },
     },
 
     actions: {
-        setPlayerList({ commit }) {
+        setPlayerList({ commit }, params = {}) {
             return hockeyApi
-                .getPlayers()
+                .getPlayers(params)
                 .then(res => {
                     commit('setPlayerList', res.data)
                 })
@@ -61,8 +60,8 @@ export default {
                     commit('setSet', res.data)
                 })
         },
-        initializePlayers({ dispatch }) {
-            dispatch('setPlayerList')
+        initializePlayers({ dispatch }, params = {}) {
+            dispatch('setPlayerList', params)
         },
         initializeSets({ dispatch }) {
             dispatch('setSetList')

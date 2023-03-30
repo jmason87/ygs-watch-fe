@@ -19,31 +19,21 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
-    path: '/hockey',
-    name: 'hockey',
-    component: () => import(/* webpackChunkName: "about" */'../views/hockey/players/PlayerIndex.vue')
-  },
-  {
-    path: '/hockey/players',
-    name: 'hockey',
-    component: () => import(/* webpackChunkName: "about" */'../views/hockey/players/PlayerIndex.vue')
-  },
-  {
     path: '/hockey/sets',
     name: 'setsIndex',
     component: () => import(/* webpackChunkName: "about" */'../views/hockey/sets/SetsIndex.vue'),
     params: true
+  },
+  { 
+    path: '/hockey/sets/addSets',
+    name: 'addSet',
+    component: () => import(/* webpackChunkName: "about" */'../views/hockey/sets/AddSet.vue')
   },
   {
     path: '/hockey/sets/:year',
     name: 'sets',
     component: () => import(/* webpackChunkName: "about" */'../views/hockey/players/PlayerIndex.vue'),
     params: true
-  },
-  { 
-    path: '/hockey/sets/add',
-    name: 'addSet',
-    component: () => import(/* webpackChunkName: "about" */'../views/hockey/sets/AddSet.vue')
   },
   {
     path: '*',
