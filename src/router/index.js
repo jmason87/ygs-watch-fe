@@ -41,6 +41,12 @@ const routes = [
   
   // Player Routes
 
+  { 
+    path: '/hockey/players/addPlayers',
+    name: 'addPlayer',
+    component: () => import(/* webpackChunkName: "about" */'../views/hockey/players/AddPlayer.vue')
+  },
+
   // Misc Routes
 
   {
