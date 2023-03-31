@@ -18,23 +18,31 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
+
+  // Sets Routes
+
   {
-    path: '/hockey/sets',
+    path: '/hockey/sets/year',
     name: 'setsIndex',
-    component: () => import(/* webpackChunkName: "about" */'../views/hockey/sets/SetsIndex.vue'),
+    component: () => import(/* webpackChunkName: "about" */'../views/hockey/sets/Year.vue'),
     params: true
-  },
+  }, 
   { 
     path: '/hockey/sets/addSets',
     name: 'addSet',
     component: () => import(/* webpackChunkName: "about" */'../views/hockey/sets/AddSet.vue')
   },
   {
-    path: '/hockey/sets/:year',
+    path: '/hockey/sets/year/:year',
     name: 'sets',
-    component: () => import(/* webpackChunkName: "about" */'../views/hockey/players/PlayerIndex.vue'),
+    component: () => import(/* webpackChunkName: "about" */'../views/hockey/sets/SetPlayers.vue'),
     params: true
   },
+  
+  // Player Routes
+
+  // Misc Routes
+
   {
     path: '*',
     name: '404',
