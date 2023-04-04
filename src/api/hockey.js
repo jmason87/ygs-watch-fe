@@ -6,6 +6,9 @@ export default {
     getPlayers(params = {}) {
         return axios.get('http://127.0.0.1:8000/api/players', { params })
     },
+    storePlayers(payload) {
+        return axios.post('http://127.0.0.1:8000/api/players', payload)
+    },
 
     // Sets API
     getSets() {

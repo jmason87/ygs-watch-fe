@@ -7,9 +7,11 @@ export default {
         playerList: [],
         setList: [],
         set: {},
+        player: {},
     },
 
     getters: {
+        player: state => state.player,
         set: state => state.set,
         allPlayers: state => state.playerList,
         allSets: state => state.setList,
@@ -18,6 +20,9 @@ export default {
     mutations: {
         setPlayerList(state, players) {
             Vue.set(state, 'playerList', players)
+        },
+        storePlayer(state, player) {
+            state.playerList.push(player)
         },
         setSetList(state, sets) {
             Vue.set(state, 'setList', sets)
@@ -29,6 +34,7 @@ export default {
             const set = { ...data }
             Vue.set(state, 'set', set)
         },
+
     },
 
     actions: {
@@ -37,6 +43,13 @@ export default {
                 .getPlayers(params)
                 .then(res => {
                     commit('setPlayerList', res.data)
+                })
+        },
+        storePlayer({ commit }, payload) {
+            return hockeyApi
+                .storePlayers(payload)
+                .then(res => {
+                    commit('storePlayer', res.data)
                 })
         },
         setSetList({ commit }) {
