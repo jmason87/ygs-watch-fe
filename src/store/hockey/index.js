@@ -24,6 +24,9 @@ export default {
         storePlayer(state, player) {
             state.playerList.push(player)
         },
+        setPlayer(state, player) {
+            Vue.set(state, 'player', player)
+        },
         setSetList(state, sets) {
             Vue.set(state, 'setList', sets)
         },
@@ -51,6 +54,18 @@ export default {
                 .then(res => {
                     commit('storePlayer', res.data)
                 })
+        },
+        clearPlayer({ commit }) {
+            commit('setPlayer', {
+                name: '',
+                position: '',
+                age: '',
+                birthdate: '',
+                year_drafted: '',
+                round: '',
+                pick: '',
+                set_uuid: ''
+            })
         },
         setSetList({ commit }) {
             return hockeyApi

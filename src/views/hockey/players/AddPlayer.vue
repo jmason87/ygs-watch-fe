@@ -33,9 +33,9 @@ export default {
         this.initializeSets()
     },
     methods: {
-        ...mapActions('hockey', ['storePlayer', 'initializeSets']),
+        ...mapActions('hockey', ['storePlayer', 'initializeSets', 'clearPlayer']),
         submit() {
-            this.storePlayer(this.player)
+            this.storePlayer(this.player).then(this.clearPlayer())
         }
     }
 }
