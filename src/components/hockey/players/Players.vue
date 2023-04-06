@@ -59,7 +59,7 @@ export default {
             return this.allPlayers.map(player => ({
                 name: player.name,
                 games_played: 100,
-                team: 'Current Team',
+                team: player.season.at(0).team.team_name,
                 goals: 10,
                 assists: 50,
                 points: 60,
