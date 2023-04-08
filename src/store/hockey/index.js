@@ -11,12 +11,14 @@ export default {
         set: {},
         player: {},
         team: {},
+        season: {}
     },
 
     getters: {
         player: state => state.player,
         set: state => state.set,
         team: state => state.team,
+        season: state => state.season,
         allPlayers: state => state.playerList,
         allSets: state => state.setList,
         allSeasons: state => state.seasonList,
@@ -54,6 +56,12 @@ export default {
         },
         storeTeam(state, team) {
             state.teamList.push(team)
+        },
+        setSeason(state, season) {
+            Vue.set(state, 'season', season)
+        },
+        storeSeason(state, season) {
+            state.seasonList.push(season)
         }
 
     },
@@ -131,6 +139,23 @@ export default {
             commit('setTeam', {
                 team_name: ''
             })
+        },
+        clearSeason({ commit }) {
+            commit('setSeason', {
+                year: '',
+                player_uuid: '',
+                team_uuid: '',
+                points: '',
+                goals: '',
+                assists: '',
+            })
+        },
+        storeSeason({ commit }, seasonPayload ) {
+            return hockeyApi
+                .storeSeason(seasonPayload)
+                .then(res => {
+                    commit('storeSeason', res.data)
+                })
         },
         initializePlayers({ dispatch }, params = {}) {
             dispatch('setPlayerList', params)
