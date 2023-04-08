@@ -58,11 +58,11 @@ export default {
         rows() {
             return this.allPlayers.map(player => ({
                 name: player.name,
-                games_played: player.season.reduce(function (acc, obj) { return acc + obj.games_played}, 0),
+                games_played: player.season.reduce(function (total, season) { return total + season.games_played}, 0),
                 team: player.season.at(0).team.team_name,
-                goals: player.season.reduce(function (acc, obj) { return acc + obj.goals}, 0),
-                assists: player.season.reduce(function (acc, obj) { return acc + obj.assists}, 0),
-                points: player.season.reduce(function (acc, obj) { return acc + obj.points}, 0),
+                goals: player.season.reduce(function (total, season) { return total + season.goals}, 0),
+                assists: player.season.reduce(function (total, season) { return total + season.assists}, 0),
+                points: player.season.reduce(function (total, season) { return total + season.points}, 0),
                 children: player.season.map(seas => ({
                     year: seas.year,
                     games_played: seas.games_played,
