@@ -6,6 +6,7 @@ export default {
     state: {
         playerList: [],
         setList: [],
+        seasonList: [],
         set: {},
         player: {},
     },
@@ -15,6 +16,7 @@ export default {
         set: state => state.set,
         allPlayers: state => state.playerList,
         allSets: state => state.setList,
+        allSeasons: state => state.seasonList,
     },
 
     mutations: {
@@ -37,6 +39,9 @@ export default {
             const set = { ...data }
             Vue.set(state, 'set', set)
         },
+        setSeasonList(state, seasons) {
+            Vue.set(state, 'seasonList', seasons)
+        }
 
     },
 
@@ -88,11 +93,21 @@ export default {
                     commit('setSet', res.data)
                 })
         },
+        setSeasonList({ commit }) {
+            return hockeyApi
+                .getSeasons()
+                .then(res => {
+                    commit('setSeasonList', res.data)
+                })
+        },
         initializePlayers({ dispatch }, params = {}) {
             dispatch('setPlayerList', params)
         },
         initializeSets({ dispatch }) {
             dispatch('setSetList')
+        },
+        initializeSeasons({ dispatch }) {
+            dispatch('setSeasonList')
         },
     }
 }
