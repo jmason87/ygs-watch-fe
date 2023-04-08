@@ -30,6 +30,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */'../views/hockey/players/AddPlayer.vue')
   },
 
+  // Season Routed
+
+  { 
+    path: '/hockey/season/addSeasons',
+    name: 'addSeason',
+    component: () => import(/* webpackChunkName: "about" */'../views/hockey/seasons/AddSeason.vue')
+  },
+  
   // Team Routes
   { 
     path: '/hockey/teams/addTeams',

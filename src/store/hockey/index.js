@@ -6,18 +6,22 @@ export default {
     state: {
         playerList: [],
         setList: [],
+        seasonList: [],
         teamList: [],
         set: {},
         player: {},
         team: {},
+        season: {}
     },
 
     getters: {
         player: state => state.player,
         set: state => state.set,
         team: state => state.team,
+        season: state => state.season,
         allPlayers: state => state.playerList,
         allSets: state => state.setList,
+        allSeasons: state => state.seasonList,
         allTeams: state => state.teamList,
     },
 
@@ -41,6 +45,9 @@ export default {
             const set = { ...data }
             Vue.set(state, 'set', set)
         },
+        setSeasonList(state, seasons) {
+            Vue.set(state, 'seasonList', seasons)
+        },
         setTeamList(state, teams) {
             Vue.set(state, 'teamList', teams)
         },
@@ -49,6 +56,12 @@ export default {
         },
         storeTeam(state, team) {
             state.teamList.push(team)
+        },
+        setSeason(state, season) {
+            Vue.set(state, 'season', season)
+        },
+        storeSeason(state, season) {
+            state.seasonList.push(season)
         }
 
     },
@@ -101,6 +114,13 @@ export default {
                     commit('setSet', res.data)
                 })
         },
+        setSeasonList({ commit }) {
+            return hockeyApi
+                .getSeasons()
+                .then(res => {
+                    commit('setSeasonList', res.data)
+                })
+        },
         setTeamList({ commit }) {
             return hockeyApi
                 .getTeams()
@@ -120,11 +140,31 @@ export default {
                 team_name: ''
             })
         },
+        clearSeason({ commit }) {
+            commit('setSeason', {
+                year: '',
+                player_uuid: '',
+                team_uuid: '',
+                points: '',
+                goals: '',
+                assists: '',
+            })
+        },
+        storeSeason({ commit }, seasonPayload ) {
+            return hockeyApi
+                .storeSeason(seasonPayload)
+                .then(res => {
+                    commit('storeSeason', res.data)
+                })
+        },
         initializePlayers({ dispatch }, params = {}) {
             dispatch('setPlayerList', params)
         },
         initializeSets({ dispatch }) {
             dispatch('setSetList')
+        },
+        initializeSeasons({ dispatch }) {
+            dispatch('setSeasonList')
         },
         initializeTeams({ dispatch }) {
             dispatch('setTeamList')
