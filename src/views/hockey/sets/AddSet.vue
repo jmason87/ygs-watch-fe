@@ -17,9 +17,9 @@ export default {
         ...mapGetters('hockey', ['set']),
     },
     methods: {
-        ...mapActions('hockey', ['storeSet']),
+        ...mapActions('hockey', ['storeSet', 'clearSet']),
         submit() {
-            this.storeSet(this.set)
+            this.storeSet(this.set).then(this.clearSet())
         }
     }
 }
