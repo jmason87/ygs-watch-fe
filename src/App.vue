@@ -5,6 +5,7 @@
       <router-link to="/hockey/players/addPlayers">Add Player</router-link> |
       <router-link to="/hockey/sets/addSets">Add Set</router-link> |   
       <router-link to="/hockey/season/addSeasons">Add Season</router-link>      
+      <router-link to="/hockey/teams/addTeams">Add Team</router-link> |
     </nav>
     <router-view/>
   </div>

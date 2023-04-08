@@ -24,7 +24,14 @@ export default {
     // Season API
     getSeasons() {
         return axios.get('http://127.0.0.1:8000/api/seasons')
-    }
+    },
+    // Team API
+    getTeams() {
+        return axios.get('http://127.0.0.1:8000/api/teams')
+    },
+    storeTeam(payload) {
+        return axios.post('http://127.0.0.1:8000/api/teams', payload)
+    },
 }
 
 
