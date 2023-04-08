@@ -6,15 +6,19 @@ export default {
     state: {
         playerList: [],
         setList: [],
+        teamList: [],
         set: {},
         player: {},
+        team: {},
     },
 
     getters: {
         player: state => state.player,
         set: state => state.set,
+        team: state => state.team,
         allPlayers: state => state.playerList,
         allSets: state => state.setList,
+        allTeams: state => state.teamList,
     },
 
     mutations: {
@@ -37,6 +41,15 @@ export default {
             const set = { ...data }
             Vue.set(state, 'set', set)
         },
+        setTeamList(state, teams) {
+            Vue.set(state, 'teamList', teams)
+        },
+        setTeam(state, team) {
+            Vue.set(state, 'team', team)
+        },
+        storeTeam(state, team) {
+            state.teamList.push(team)
+        }
 
     },
 
@@ -88,11 +101,33 @@ export default {
                     commit('setSet', res.data)
                 })
         },
+        setTeamList({ commit }) {
+            return hockeyApi
+                .getTeams()
+                .then(res => {
+                    commit('setTeamList', res.data)
+                })
+        },
+        storeTeam({ commit }, teamPayload) {
+            return hockeyApi
+                .storeTeam(teamPayload)
+                .then(res => {
+                    commit('storeTeam', res.data)
+                })
+        },
+        clearTeam({ commit }) {
+            commit('setTeam', {
+                team_name: ''
+            })
+        },
         initializePlayers({ dispatch }, params = {}) {
             dispatch('setPlayerList', params)
         },
         initializeSets({ dispatch }) {
             dispatch('setSetList')
+        },
+        initializeTeams({ dispatch }) {
+            dispatch('setTeamList')
         },
     }
 }
