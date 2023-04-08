@@ -47,6 +47,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */'../views/hockey/players/AddPlayer.vue')
   },
 
+  // Season Routed
+
+  { 
+    path: '/hockey/seasons',
+    name: 'addPlayer',
+    component: () => import(/* webpackChunkName: "about" */'../views/hockey/seasons/index.vue')
+  },
+
   // Misc Routes
 
   {
