@@ -30,6 +30,13 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */'../views/hockey/players/AddPlayer.vue')
   },
 
+  // Team Routes
+  { 
+    path: '/hockey/teams/addTeams',
+    name: 'addTeam',
+    component: () => import(/* webpackChunkName: "about" */'../views/hockey/teams/AddTeam.vue')
+  },
+
   // Misc Routes
   {
     path: '*',
