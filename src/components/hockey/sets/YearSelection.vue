@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="year in years" :key="year.id">
+        <div v-for="year in setInfo.years" :key="year.id">
             <router-link :to="{name: 'sets', params: {year: year}}">
             <button class="btn btn-primary">{{year}}</button>
             </router-link>
@@ -10,11 +10,12 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import { setInfo } from '@/components/hockey/sets/constants.js'
 
 export default {
     data(){
         return {
-            years: ['2019', '2020','2021','2022'],
+            setInfo,
         }
     },
     computed: {
